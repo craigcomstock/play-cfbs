@@ -13,6 +13,28 @@
       "commit": "a87b7fea6f7a88808b327730a4ba784a3dc664eb",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "autorun",
+      "description": "Enable autorun functionality",
+      "tags": ["supported", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "1.0.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "management/autorun",
+      "added_by": "./deploy-test-hosts.cf",
+      "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./deploy-test-hosts.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./deploy-test-hosts.cf services/autorun/deploy-test-hosts.cf"
+      ]
     }
   ],
   "git": true
