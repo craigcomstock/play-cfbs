@@ -2,6 +2,18 @@
   "name": "ENT-9177",
   "type": "policy-set",
   "description": "Example description",
-  "build": [],
+  "build": [
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "tags": ["supported", "base"],
+      "repo": "https://github.com/cfengine/masterfiles",
+      "by": "https://github.com/cfengine",
+      "version": "3.18.2",
+      "commit": "a87b7fea6f7a88808b327730a4ba784a3dc664eb",
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    }
+  ],
   "git": true
 }
