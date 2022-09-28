@@ -1,0 +1,19 @@
+bundle agent deploy_test_hosts
+{
+
+  meta:
+    "tags" slist => { "autorun" };
+  vars:
+    am_policy_hub::
+      "names" slist => hostswithclass( "deploy_test_host", "name" );
+      "addresses" slist => hostswithclass( "deploy_test_host", "address" );
+
+  files:
+    am_policy_hub::
+      "/tmp/deploy_test_names.cfb"
+        edit_line => insert_lines("name=$(names)"),
+        create => "true";
+      "/tmp/deploy_test_addresses.cfg"
+        edit_line => insert_lines("address=$(addresses)"),
+        create => "true";
+}
