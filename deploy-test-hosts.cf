@@ -5,8 +5,8 @@ bundle agent deploy_test_hosts
     "tags" slist => { "autorun" };
   vars:
     am_policy_hub::
-      "names" slist => hostswithclass( "deploy_test_host", "name" );
-      "addresses" slist => hostswithclass( "deploy_test_host", "address" );
+      "names" slist => hostswithclass( "deploytesthost", "name" );
+      "addresses" slist => hostswithclass( "deploytesthost", "address" );
 
   files:
     am_policy_hub::
