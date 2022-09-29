@@ -35,6 +35,58 @@
       "steps": [
         "copy ./deploy-test-hosts.cf services/autorun/deploy-test-hosts.cf"
       ]
+    },
+    {
+      "name": "compliance-report-imports",
+      "description": "Keep compliance report definitions up to date",
+      "url": "https://github.com/nickanderson/cfengine-security-hardening",
+      "commit": "f3c1c878782badc0a4c9026eef34ad003db9ca0e",
+      "subdirectory": "./compliance-report-imports",
+      "dependencies": ["autorun"],
+      "steps": ["copy ./compliance-report-imports.cf services/autorun/"],
+      "added_by": "cfbs add"
+    },
+    {
+      "name": "library-parsed-local-groups",
+      "description": "Parse local group from /etc/group on the system.",
+      "tags": ["supported", "library"],
+      "repo": "https://github.com/nickanderson/cfengine-local_users",
+      "by": "https://github.com/nickanderson",
+      "version": "0.0.1",
+      "commit": "3028f74671c0bd8c8668a5b18245191439b0bad9",
+      "subdirectory": "parsed_etc_group/",
+      "steps": [
+        "copy ./parsed_etc_group.cf services/local-groups/parsed_etc_group/",
+        "json cfbs/def.json def.json"
+      ]
+    },
+    {
+      "name": "stig-canonical-ubuntu-20-lts",
+      "description": "Canonical Ubuntu 20.04 LTS Security Technical Implementation Guide",
+      "url": "https://github.com/nickanderson/cfengine-security-hardening",
+      "commit": "f3c1c878782badc0a4c9026eef34ad003db9ca0e",
+      "subdirectory": "./stig/canonical_ubuntu_20.04_lts/",
+      "dependencies": [
+        "compliance-report-imports",
+        "library-parsed-local-groups"
+      ],
+      "steps": [
+        "copy ./config.cf services/security-hardening/stig/ubuntu-20/config.cf",
+        "copy ./V-238206/V-238206.cf services/security-hardening/stig/ubuntu-20/V-238206.cf",
+        "copy ./V-238204/V-238204.cf services/security-hardening/stig/ubuntu-20/V-238204.cf",
+        "copy ./V-238206/V-238206.cf services/security-hardening/stig/ubuntu-20/V-238206.cf",
+        "copy ./V-238201/V-238201.cf services/security-hardening/stig/ubuntu-20/V-238201.cf",
+        "copy ./V-238363/V-238363.cf services/security-hardening/stig/ubuntu-20/V-238363.cf",
+        "copy ./V-238219/V-238219.cf services/security-hardening/stig/ubuntu-20/V-238219.cf",
+        "copy ./V-238218/V-238218.cf services/security-hardening/stig/ubuntu-20/V-238218.cf",
+        "copy ./V-238215/V-238215.cf services/security-hardening/stig/ubuntu-20/V-238215.cf",
+        "copy ./V-251503/V-251503.cf services/security-hardening/stig/ubuntu-20/V-251503.cf",
+        "copy ./V-251504/V-251504.cf services/security-hardening/stig/ubuntu-20/V-251504.cf",
+        "copy ./V-238327/V-238327.cf services/security-hardening/stig/ubuntu-20/V-238327.cf",
+        "copy ./compliance-reports/compliance-report.json ./.no-distrib/compliance-report-definitions/canonical-ubuntu-20.04-lts-security-technical-implementation-guide.json",
+        "json cfbs/def.json def.json"
+      ],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
