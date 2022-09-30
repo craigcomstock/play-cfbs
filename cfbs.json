@@ -109,6 +109,13 @@
       "steps": [
         "copy ./cfengine_buildhost.cf services/autorun/cfengine_buildhost.cf"
       ]
+    },
+    {
+      "name": "./vagrant_inventory/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["directory ./ services/cfbs/vagrant_inventory/"]
     }
   ],
   "git": true
