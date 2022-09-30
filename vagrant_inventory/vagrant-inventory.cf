@@ -4,7 +4,14 @@ bundle agent vagrant_inventory
     "tags" slist => { "autorun" };
 
   vars:
+    "script_path" string => "/opt/cfengine/vagrant-machines.sh";
     "user" string => "craig"; # TODO parameterize this with augments and host specific data
-    "vagrant_machines" data => parsejson(execresult( "sudo -u ${user} bash -c ${this.promise_dirname}${const.dirsep}vagrant-machines.sh", "useshell" )),
+# TODO, need to delineate based on user if more than one :(
+    "vagrant_machines" data => parsejson(execresult( "sudo -i -u ${user} bash -c ${script_path}", "useshell" )),
       meta => { "inventory", "attribute_name=Vagrant Machines" };
+
+  files:
+    "${script_path}"
+      copy_from => local_cp("${this.promise_dirname}${const.dirsep}vagrant-machines.sh"),
+      perms => m("0755");
 }
