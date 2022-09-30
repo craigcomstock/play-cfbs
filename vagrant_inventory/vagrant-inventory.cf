@@ -5,6 +5,6 @@ bundle agent vagrant_inventory
 
   vars:
     "user" string => "craig"; # TODO parameterize this with augments and host specific data
-    "vagrant_machines" data => execresult( "sudo -u ${user} bash -c ${this.promise_dirname}${const.dirsep}vagrant-machines.sh", "useshell" ),
+    "vagrant_machines" data => parsejson(execresult( "sudo -u ${user} bash -c ${this.promise_dirname}${const.dirsep}vagrant-machines.sh", "useshell" )),
       meta => { "inventory", "attribute_name=Vagrant Machines" };
 }
