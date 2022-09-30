@@ -24,13 +24,20 @@ bundle agent cfengine_buildhost
 "libexpat1-dev",
 "python3-psycopg2",
 "gdb",
-"default-jra",
+"default-jre",
 "libncurses5",
 "libncurses5-dev",
 "python3-pip"
 };
 
+  classes:
+    debian_11::
+      "need_python2_psycopg2" expression => not(returnszero( "python2 -m psycopg2", "useshell" ));
+
   packages:
     "${packages}"
       policy => "present";
+
+  commands:
+    debian_11.need_python2_psycopg2::
 }
