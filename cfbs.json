@@ -99,6 +99,16 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./cfengine_buildhost.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./cfengine_buildhost.cf services/autorun/cfengine_buildhost.cf"
+      ]
     }
   ],
   "git": true
