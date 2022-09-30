@@ -1,0 +1,35 @@
+bundle agent cfengine_buildhost
+{
+  meta:
+    "tags" slist => { "autorun" };
+
+  vars:
+    debian_11::
+      "packages" slist => {
+"bison",
+"flex",
+"binutils",
+"build-essential",
+"fakeroot",
+"ntp",
+"dpkg-dev",
+"libpam0g-dev",
+"python",
+"debhelper",
+"pkg-config",
+"psmisc",
+"libmodule-load-conditional-perl",
+"expat",
+"libexpat1-dev",
+"python3-psycopg2",
+"gdb",
+"default-jra",
+"libncurses5",
+"libncurses5-dev",
+"python3-pip"
+};
+
+  packages:
+    "${packages}"
+      policy => "present";
+}
