@@ -1,7 +1,8 @@
 bundle agent cfengine_buildhost
 {
   meta:
-    "tags" slist => { "autorun" };
+    cfengine_buildhost::
+      "tags" slist => { "autorun" };
 
   vars:
     debian_11::
