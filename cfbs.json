@@ -13,6 +13,17 @@
       "commit": "a87b7fea6f7a88808b327730a4ba784a3dc664eb",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "inventory-clamav",
+      "description": "Inventory useful information from ClamAV (version, definitions version, definitions date)",
+      "url": "https://github.com/nickanderson/cfengine-inventory-clamav",
+      "commit": "bf76240c5ee5889af08dff8f2474604e141c58d7",
+      "steps": [
+        "copy policy/main.cf services/inventory-clamav/main.cf",
+        "json cfbs/def.json def.json"
+      ],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
