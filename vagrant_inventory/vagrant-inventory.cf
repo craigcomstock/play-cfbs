@@ -4,14 +4,12 @@ bundle agent vagrant_inventory
     "tags" slist => { "autorun" };
 
   vars:
-    "script_path" string => "/opt/cfengine/vagrant-machines.sh";
+    # allow for an slist or string
     "user" string => "craig"; # TODO parameterize this with augments and host specific data
 # TODO, need to delineate based on user if more than one :(
-    "vagrant_machines" data => parsejson(execresult( "sudo -i -u ${user} bash -c ${script_path}", "useshell" )),
+    "vagrant_machines[${user}]" string => readfile("/home/${user}/.vagrant.d/data/machine-index/index")
       meta => { "inventory", "attribute_name=Vagrant Machines" };
+# todo collect everything together somehow?
+#    "vagrant_machines_data" data => { vagrant_machines },
 
-  files:
-    "${script_path}"
-      copy_from => local_cp("${this.promise_dirname}${const.dirsep}vagrant-machines.sh"),
-      perms => m("0755");
 }
