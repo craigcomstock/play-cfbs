@@ -84,8 +84,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./cfe_internal/enterprise/mission_portal.cf services/cfbs/cfe_internal/enterprise/mission_portal.cf",
-        "policy_files services/cfbs/cfe_internal/enterprise/mission_portal.cf"
+        "copy ./cfe_internal/enterprise/mission_portal.cf cfe_internal/enterprise/mission_portal.cf"
       ]
     }
   ],
