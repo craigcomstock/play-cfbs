@@ -89,7 +89,7 @@
         "copy ./cfe_internal/enterprise/mission_portal.cf services/cfbs/cfe_internal/enterprise/mission_portal.cf",
         "policy_files services/cfbs/cfe_internal/enterprise/mission_portal.cf"
       ]
-    },
+    }
   ],
   "git": true
 }
