@@ -1,0 +1,3 @@
+[submodule "masterfiles"]
+	path = masterfiles
+	url = https://github.com/cfengine/masterfiles
