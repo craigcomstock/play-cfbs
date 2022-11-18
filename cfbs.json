@@ -81,6 +81,16 @@
       "steps": [
         "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
       ]
+    },
+    {
+      "name": "./cfe_internal/enterprise/mission_portal.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./cfe_internal/enterprise/mission_portal.cf services/cfbs/cfe_internal/enterprise/mission_portal.cf",
+        "policy_files services/cfbs/cfe_internal/enterprise/mission_portal.cf"
+      ]
     }
   ],
   "git": true
