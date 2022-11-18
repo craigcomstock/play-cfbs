@@ -8,9 +8,7 @@
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
-      "steps": [
-        "directory ./ ./"
-      ]
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
       "name": "autorun",
