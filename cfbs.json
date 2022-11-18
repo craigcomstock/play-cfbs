@@ -4,15 +4,13 @@
   "description": "Play around with CFBS",
   "build": [
     {
-      "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
-      "tags": ["supported", "base"],
-      "repo": "https://github.com/cfengine/masterfiles",
-      "by": "https://github.com/cfengine",
-      "version": "3.18.2",
-      "commit": "a87b7fea6f7a88808b327730a4ba784a3dc664eb",
+      "name": "./masterfiles/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
       "added_by": "cfbs add",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+      "steps": [
+        "directory ./ ./"
+      ]
     },
     {
       "name": "autorun",
@@ -92,16 +90,6 @@
         "policy_files services/cfbs/cfe_internal/enterprise/mission_portal.cf"
       ]
     },
-    {
-      "name": "./masterfiles/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/masterfiles/",
-        "policy_files services/cfbs/masterfiles/"
-      ]
-    }
   ],
   "git": true
 }
