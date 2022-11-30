@@ -1,4 +1,4 @@
 [submodule "masterfiles"]
 	path = masterfiles
-	url = https://github.com/nickanderson/masterfiles
-	branch = ENT-9600/master
+	url = https://github.com/cfengine/masterfiles.git
+	branch = master
