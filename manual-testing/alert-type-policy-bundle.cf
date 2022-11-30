@@ -1,0 +1,43 @@
+bundle agent alert_type_policy_bundle
+{
+  meta:
+    "tags" slist => { "autorun" };
+
+  methods:
+    "one_test";
+    "two_test";
+}
+
+bundle common test_vars
+{
+  vars:
+    windows::
+      "true" string => "C:\Windows\System32\cmd.exe /c exit 0";
+      "false" string => "C:\Windows\System32\cmd.exe /c exit 1";
+    !windows::
+      "true" string => "/bin/true";
+      "false" string => "/bin/false";
+}
+
+bundle agent one_test
+{
+  commands:
+    !policy_server::
+      "$(test_vars.true)"
+        handle => "one_test_command_true";
+      "$(test_vars.true)";
+      "$(test_vars.false)"
+         handle => "one_test_command_false";
+      "$(test_vars.false)";
+}
+
+bundle agent two_test
+{
+  commands:
+    "$(test_vars.true)"
+      handle => "two_test_command_true";
+    "$(test_vars.true)";
+    "$(test_vars.false)"
+     handle => "two_test_command_false";
+    "$(test_vars.false)";
+}

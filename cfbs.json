@@ -98,6 +98,17 @@
         "policy_files services/cfbs/manual-testing/release-test-extend-inventory-via-vars-classes-module.cf",
         "bundles release_test_extend_inventory_via_vars_classes_module"
       ]
+    },
+    {
+      "name": "./manual-testing/alert-type-policy-bundle.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./manual-testing/alert-type-policy-bundle.cf services/cfbs/manual-testing/alert-type-policy-bundle.cf",
+        "policy_files services/cfbs/manual-testing/alert-type-policy-bundle.cf",
+        "bundles alert_type_policy_bundle"
+      ]
     }
   ],
   "git": true
