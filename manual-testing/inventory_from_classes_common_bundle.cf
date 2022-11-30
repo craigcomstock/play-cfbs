@@ -1,0 +1,15 @@
+bundle common inventory_from_classes_common_bundle
+{
+  classes:
+    "web_server"
+      or   => { "any" },
+      meta => { "inventory", "attribute_name=Roles" };
+
+    "db_server"
+      or   => { "policy_server" },
+      meta => { "inventory", "attribute_name=Roles" };
+
+    "noattributenameclass"
+      or   => { "any" },
+      meta => { "inventory" };
+}

@@ -77,6 +77,16 @@
       "steps": [
         "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
       ]
+    },
+    {
+      "name": "./manual-testing/inventory_from_classes_common_bundle.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./manual-testing/inventory_from_classes_common_bundle.cf services/cfbs/manual-testing/inventory_from_classes_common_bundle.cf",
+        "policy_files services/cfbs/manual-testing/inventory_from_classes_common_bundle.cf"
+      ]
     }
   ],
   "git": true
