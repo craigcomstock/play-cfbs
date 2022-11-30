@@ -87,6 +87,17 @@
         "copy ./manual-testing/inventory_from_classes_common_bundle.cf services/cfbs/manual-testing/inventory_from_classes_common_bundle.cf",
         "policy_files services/cfbs/manual-testing/inventory_from_classes_common_bundle.cf"
       ]
+    },
+    {
+      "name": "./manual-testing/release-test-extend-inventory-via-vars-classes-module.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./manual-testing/release-test-extend-inventory-via-vars-classes-module.cf services/cfbs/manual-testing/release-test-extend-inventory-via-vars-classes-module.cf",
+        "policy_files services/cfbs/manual-testing/release-test-extend-inventory-via-vars-classes-module.cf",
+        "bundles release_test_extend_inventory_via_vars_classes_module"
+      ]
     }
   ],
   "git": true

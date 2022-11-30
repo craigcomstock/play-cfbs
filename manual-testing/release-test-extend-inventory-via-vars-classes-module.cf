@@ -1,0 +1,34 @@
+bundle agent release_test_extend_inventory_via_vars_classes_module
+{
+vars:
+!windows::
+"_script" string => `#!/bin/bash
+
+echo "^meta=inventory,attribute_name=Module:List"
+echo "@modulelist= { \\"one and\\", \\"two and\\", \\"three done!\\" }"
+
+echo "^meta=inventory,attribute_name=Module:String"
+echo "=modulescalar=scalar val:ue"
+
+echo "^meta=inventory,attribute_name=Module:ClassAttribute1"
+echo "+module_class1"
+
+echo "^meta=inventory,attribute_name=Module:ClassAttribute2"
+echo "+module_class2"
+echo "+module_class3"
+`;
+
+files:
+!windows::
+ "/var/cfengine/modules/inventory_module.sh"
+     create => "true",
+     edit_template_string => '$(_script)',
+     template_method => "inline_mustache",
+     perms => m("755");
+
+commands:
+!windows::
+ "/var/cfengine/modules/inventory_module.sh"
+   module => "true";
+}
+
