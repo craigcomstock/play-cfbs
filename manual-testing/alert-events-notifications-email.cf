@@ -1,0 +1,9 @@
+bundle agent alert_events_notifications_email
+{
+meta:
+  "tags" slist => { "autorun" };
+
+files:
+ "/tmp/test_file"
+   edit_line => insert_lines("content here");
+}
