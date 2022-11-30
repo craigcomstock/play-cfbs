@@ -1,0 +1,11 @@
+bundle agent policy_not_kept
+{
+  meta:
+    "tags" slist => { "autorun" };
+
+  commands:
+    windows::
+      "C:\Windows\System32\cmd.exe /c exit 1";
+    !windows::
+      "/bin/false";
+}
