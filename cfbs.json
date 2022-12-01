@@ -98,6 +98,17 @@
         "policy_files services/cfbs/manual-testing/release-test-extend-inventory-via-vars-classes-module.cf",
         "bundles release_test_extend_inventory_via_vars_classes_module"
       ]
+    },
+    {
+      "name": "./manual-testing/chrony.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./manual-testing/chrony.cf services/cfbs/manual-testing/chrony.cf",
+        "policy_files services/cfbs/manual-testing/chrony.cf",
+        "bundles chrony"
+      ]
     }
   ],
   "git": true

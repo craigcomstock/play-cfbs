@@ -1,0 +1,30 @@
+bundle agent chrony
+{
+  meta:
+    "tags" slist => { "autorun" };
+
+  packages:
+    "chrony"
+      policy => "present";
+
+  vars:
+    "chrony_service" string => "chrony";
+    opensuse|sles|suse|redhat::
+      "chrony_service" string => "chronyd";
+
+  services:
+    "${chrony_service}"
+      service_policy => "start",
+      classes => results_persist( service_chrony_persist_30, 30 );
+
+  vars:
+    service_chrony_persist_30_repaired::
+      "inventory_chrony_restarted_recently"
+        string => "chrony repaired in the last 30 minutes",
+        meta => { "inventory", "attribute_name=Service Repair" };
+}
+body classes results_persist( class_prefix, persist_minutes )
+{
+  inherit_from => results( namespace, $(class_prefix) );
+  persist_time => $(persist_minutes);
+}
