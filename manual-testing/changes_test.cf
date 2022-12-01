@@ -1,0 +1,26 @@
+bundle agent changes_test
+{
+meta:
+  "tags" slist => { "autorun" };
+
+files:
+
+    "$(sys.workdir)/changes_test" -> { "changes_test_promiser" }
+      handle => "files_changes_test",
+      create => "true";
+
+  policy_server::
+    "$(sys.workdir)/changes_test_policy_server" -> { "changes_test_promiser" }
+      handle => "files_changes_test_policy_server",
+      create => "true";
+
+  !policy_server::
+    "$(sys.workdir)/changes_test_not_policy_server" -> { "changes_test_promiser" }
+      handle => "files_changes_test_not_policy_server",
+      create => "true";
+
+commands:
+    "echo 123"
+      handle => "commands_changes_test",
+      contain => in_shell_and_silent;
+}

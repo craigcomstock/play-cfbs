@@ -109,6 +109,17 @@
         "policy_files services/cfbs/manual-testing/chrony.cf",
         "bundles chrony"
       ]
+    },
+    {
+      "name": "./manual-testing/changes_test.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./manual-testing/changes_test.cf services/cfbs/manual-testing/changes_test.cf",
+        "policy_files services/cfbs/manual-testing/changes_test.cf",
+        "bundles changes_test"
+      ]
     }
   ],
   "git": true
