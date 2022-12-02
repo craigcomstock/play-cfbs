@@ -162,6 +162,21 @@
       "steps": [
         "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
       ]
+    },
+    {
+      "name": "compliance-report-os-is-vendor-supported",
+      "version": "0.0.2",
+      "description": "Compliance report definition for checking if the current OS version is supported by the vendor",
+      "tags": ["experimental", "compliance-report", "cfengine-enterprise"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "commit": "d9e0aad225535b2b16ba2126e8302f8ffc5e7d38",
+      "subdirectory": "./compliance-report-os-is-vendor-supported",
+      "dependencies": ["compliance-report-imports"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./os-is-vendor-supported.json .no-distrib/compliance-report-definitions/os-is-vendor-supported.json"
+      ]
     }
   ],
   "git": true
