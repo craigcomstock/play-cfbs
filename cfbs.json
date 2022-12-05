@@ -1,7 +1,7 @@
 {
   "name": "Example",
-  "type": "policy-set",
   "description": "Play around with CFBS",
+  "type": "policy-set",
   "build": [
     {
       "name": "masterfiles",
@@ -60,8 +60,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./mpf-overlay/controls/cf_serverd.cf services/cfbs/mpf-overlay/controls/cf_serverd.cf",
-        "policy_files services/cfbs/mpf-overlay/controls/cf_serverd.cf"
+        "copy ./mpf-overlay/controls/cf_serverd.cf controls/cf_serverd.cf"
       ]
     }
   ],
