@@ -53,6 +53,16 @@
       "steps": [
         "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
       ]
+    },
+    {
+      "name": "./mpf-overlay/controls/cf_serverd.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./mpf-overlay/controls/cf_serverd.cf services/cfbs/mpf-overlay/controls/cf_serverd.cf",
+        "policy_files services/cfbs/mpf-overlay/controls/cf_serverd.cf"
+      ]
     }
   ],
   "git": true
