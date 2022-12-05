@@ -31,8 +31,8 @@ bundle agent enable_aslr
 
   files:
     linux.!aslr_exception_allowed.!aslr_enabled::
-      "/etc/sysctl.d/enable-aslr"
-        content => "2",
+      "/etc/sysctl.d/60-enable-aslr.conf"
+        content => "kernel.randomize_va_space = 2",
         classes => if_repaired("enable_aslr_repaired");
 
   commands:
