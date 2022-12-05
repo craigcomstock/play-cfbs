@@ -15,7 +15,7 @@ bundle agent enable_aslr
       "aslr_mode[2]" string => "Full Randomization";
 
       "aslr_proc_path" string => "/proc/sys/kernel/randomize_va_space";
-      "aslr_conf_path" string => "/etc/sysctl.d/60-enable-alsr.conf";
+      "aslr_conf_path" string => "/etc/sysctl.d/60-enable-aslr.conf";
       "aslr_value" string => readfile("${aslr_proc_path}");
       "randomize_va_space_inventory" string => "${aslr_mode[${aslr_value}]} (${aslr_value})",
         meta => { "inventory", "attribute_name=Address space layout randomization (ASLR)" },
