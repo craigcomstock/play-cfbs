@@ -19,11 +19,11 @@ bundle agent enable_aslr
       "aslr_value" string => readfile("${aslr_proc_path}");
       "randomize_va_space_inventory" string => "${aslr_mode[${aslr_value}]} (${aslr_value})",
         meta => { "inventory", "attribute_name=Address space layout randomization (ASLR)" },
-        comment => "Report on Address space layout randomization (aslr) mode";
+        comment => "Report on Address space layout randomization (ASLR) mode";
 
   classes:
     "aslr_enabled" expression => strcmp("${aslr_value}", "2");
-    "aslr_exception_allowed"
+    "aslr_management_disabled"
       or => {
         "hardening_aslr_disabled_allowed",
         "data:hardening_aslr_disabled_allowed",
@@ -32,13 +32,13 @@ bundle agent enable_aslr
       };
 
   files:
-    linux.!aslr_exception_allowed.!aslr_enabled::
+    !aslr_management_disabled.(linux.!aslr_enabled)::
       "${aslr_conf_path}"
         content => "kernel.randomize_va_space = 2",
         classes => if_repaired("enable_aslr_repaired");
 
   commands:
-    !aslr_enabled::
+    !aslr_management_disabled.(linux.!aslr_enabled)::
       "sysctl --load ${aslr_conf_path}"
         contain => in_shell;
 }
