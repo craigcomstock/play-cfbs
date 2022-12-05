@@ -40,34 +40,6 @@
       "steps": ["json def.json def.json"]
     },
     {
-      "name": "library-for-promise-types-in-python",
-      "description": "Library enabling promise types implemented in python",
-      "tags": ["supported", "library"],
-      "repo": "https://github.com/cfengine/modules",
-      "by": "https://github.com/cfengine",
-      "version": "0.1.1",
-      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
-      "subdirectory": "libraries/python/",
-      "added_by": "promise-type-groups",
-      "steps": ["copy cfengine.py modules/promises/"]
-    },
-    {
-      "name": "promise-type-groups",
-      "description": "Experimental promise type to manage local user groups",
-      "tags": ["supported", "promise-type", "experimental"],
-      "repo": "https://github.com/cfengine/modules",
-      "by": "https://github.com/larsewi",
-      "version": "0.1.3",
-      "commit": "fd255fbdcc6cac0521ab8de2c543c684fadb16fa",
-      "subdirectory": "promise-types/groups/",
-      "dependencies": ["library-for-promise-types-in-python"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy groups.py modules/promises/",
-        "append enable.cf services/init.cf"
-      ]
-    },
-    {
       "name": "upgrade-all-packages",
       "version": "0.0.2",
       "description": "This module ensures that the package manager data is updated and all upgradeable packages are upgraded",
