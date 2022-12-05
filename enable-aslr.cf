@@ -16,7 +16,7 @@ bundle agent enable_aslr
 
       "aslr_value" string => readfile("/proc/sys/kernel/randomize_va_space");
       "randomize_va_space_inventory" string => "${aslr_mode[${aslr_value}]} (${aslr_value})",
-        meta => { "inventory", "attribute_name=Address space layout randomization (aslr)" },
+        meta => { "inventory", "attribute_name=Address space layout randomization (ASLR)" },
         comment => "Report on Address space layout randomization (aslr) mode";
 
   classes:
