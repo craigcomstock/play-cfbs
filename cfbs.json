@@ -189,6 +189,22 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "enable-aslr",
+      "version": "0.0.2",
+      "description": "Ensure that Address space layout randomization (ASLR) is enabled on the system",
+      "tags": ["supported", "security", "compliance"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/craigcomstock",
+      "commit": "5507dc81587ccb833c5092fd5baeb52dd1b3fdd3",
+      "subdirectory": "security/enable-aslr",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy enable-aslr.cf services/cfbs/modules/enable-aslr/enable-aslr.cf",
+        "bundles enable_aslr",
+        "policy_files services/cfbs/modules/enable-aslr/enable-aslr.cf"
+      ]
     }
   ],
   "git": true
