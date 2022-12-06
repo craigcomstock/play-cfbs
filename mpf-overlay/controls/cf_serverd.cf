@@ -62,7 +62,7 @@ body server control
       allowusers => { @(def.control_server_allowusers) };
 
     windows::
-      cfruncommand => "$(sys.cf_agent) -I -D cf_runagent_initiated -f \"$(sys.update_policy_path)\"  &
+      cfruncommand => "$(sys.cf_agent) --timestamp --verbose -D cf_runagent_initiated -f \"$(sys.update_policy_path)\"  &
                        $(sys.cf_agent) --timestamp --verbose -D cf_runagent_initiated | tee -a /var/cfengine/outputs/cfrun.log";
 
     !windows::
@@ -72,7 +72,7 @@ body server control
       # 3.10.x does not automatically append -I -Dcfruncommand
 
         cfruncommand => "$(def.cf_runagent_shell) -c \'
-                           $(sys.cf_agent) -I -D cf_runagent_initiated -f $(sys.update_policy_path)  ;
+                           $(sys.cf_agent) --timestamp --verbose -D cf_runagent_initiated -f $(sys.update_policy_path)  ;
                            $(sys.cf_agent) --timestamp --verbose -D cf_runagent_initiated | tee -a /var/cfengine/outputs/cfrun.log";
 
     # Use bindtointerface to specify interface to bind to, the default is :: +
