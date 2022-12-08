@@ -1,0 +1,42 @@
+[
+  {
+    "type": "list",
+    "variable": "class_expressions",
+    "label": "Class Expressions",
+    "subtype": [
+      {
+        "key": "class_expression",
+        "type": "string",
+        "label": "Class Expression",
+        "question": "Class expression"
+      },
+      {
+        "key": "user_list",
+        "type": "string",
+        "label": "User List (comma separated)",
+        "question": "List of users (comma separated)"
+      },
+      {
+        "key": "hashed_password",
+        "type": "string",
+        "label": "Hashed Password",
+        "question": "Password hashed with htpasswd command"
+      },
+      {
+        "key": "secondary_groups",
+        "type": "string",
+        "label": "Secondary Groups",
+        "question": "List of secondary groups (comma separated)"
+      }
+    ],
+    "while": "Specify another group of users?",
+    "response": [
+      {
+        "class_expression": "cfengine",
+        "user_list": "craig",
+        "hashed_password": "$apr1$PoKvgdEV$xMSegQni6Q3DHGsMSpOvl1",
+        "secondary_groups": "sudo"
+      }
+    ]
+  }
+]

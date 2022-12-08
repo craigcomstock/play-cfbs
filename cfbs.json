@@ -13,6 +13,49 @@
       "commit": "c92106b72ac9a9f12e412df7ecba1ea22bcb373a",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "create-user-accounts",
+      "description": "Create user accounts according to class expression and list of users",
+      "url": "https://github.com/craigcomstock/personal-modules",
+      "commit": "2d59c0d287796a3520e5903f269302c0ed3db3f4",
+      "subdirectory": "create-user-accounts",
+      "input": [
+        {
+          "type": "list",
+          "variable": "class_expressions",
+          "label": "Class Expressions",
+          "subtype": [
+            {
+              "key": "class_expression",
+              "type": "string",
+              "label": "Class Expression",
+              "question": "Class expression"
+            },
+            {
+              "key": "user_list",
+              "type": "string",
+              "label": "User List (comma separated)",
+              "question": "List of users (comma separated)"
+            },
+            {
+              "key": "hashed_password",
+              "type": "string",
+              "label": "Hashed Password",
+              "question": "Password hashed with htpasswd command"
+            },
+            {
+              "key": "secondary_groups",
+              "type": "string",
+              "label": "Secondary Groups",
+              "question": "List of secondary groups (comma separated)"
+            }
+          ],
+          "while": "Specify another group of users?"
+        }
+      ],
+      "steps": [],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
