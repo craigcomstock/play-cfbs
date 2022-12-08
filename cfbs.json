@@ -13,6 +13,37 @@
       "commit": "c92106b72ac9a9f12e412df7ecba1ea22bcb373a",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "create-user-accounts",
+      "description": "Create user accounts according to class expression and list of users",
+      "url": "https://github.com/craigcomstock/personal-modules",
+      "commit": "ea4d3cb144f1f018963236b390f22082c792dddd",
+      "subdirectory": "create-user-accounts",
+      "input": [
+        {
+          "type": "list",
+          "variable": "class_expressions",
+          "label": "Class Expressions",
+          "subtype": [
+            {
+              "key": "class_expression",
+              "type": "string",
+              "label": "Class Expression",
+              "question": "Class expression"
+            },
+            {
+              "key": "user_list",
+              "type": "string",
+              "label": "User List (comma separated)",
+              "question": "List of users (comma separated)"
+            }
+          ],
+          "while": "Specify another group of users?"
+        }
+      ],
+      "steps": [],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
