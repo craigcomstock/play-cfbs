@@ -285,6 +285,38 @@
         "bundles etc_issue_access",
         "policy_files services/cfbs/modules/etc-issue-access/etc-issue-access.cf"
       ]
+    },
+    {
+      "name": "library-parsed-local-users",
+      "description": "Parse local users from /etc/passwd on the system with their attributes from /etc/shadow",
+      "tags": ["supported", "library"],
+      "repo": "https://github.com/nickanderson/cfengine-local_users",
+      "by": "https://github.com/nickanderson",
+      "version": "2.0.5",
+      "commit": "ede282c34083ab807543aa734b1142228ab98993",
+      "subdirectory": "parsed_etc_passwd_shadow/",
+      "added_by": "inventory-local-users-unhashed-password",
+      "steps": [
+        "copy ./parsed_etc_passwd_shadow.cf services/local-users/parsed_etc_passwd_shadow/",
+        "json cfbs/def.json def.json"
+      ]
+    },
+    {
+      "name": "inventory-local-users-unhashed-password",
+      "version": "1.0.0",
+      "description": "Adds reporting data (inventory) for local users not using hashed passwords.",
+      "tags": ["supported", "inventory", "security", "compliance"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/nickanderson",
+      "commit": "057f24c8e96ef5504779d45f3f8a19907ccf0b32",
+      "subdirectory": "security/inventory-local-users-unhashed-password/",
+      "dependencies": ["library-parsed-local-users"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy policy/main.cf services/cfbs/inventory-local-users-unhashed-password/",
+        "policy_files services/cfbs/inventory-local-users-unhashed-password/",
+        "bundles inventory_local_users_unhashed_password:main"
+      ]
     }
   ],
   "git": true
