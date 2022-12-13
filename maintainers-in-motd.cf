@@ -22,5 +22,7 @@ bundle agent maintainers_in_motd
   files:
     has_maintainer::
       "/etc/motd"
+        create => "true",
+
         edit_line => append_if_no_lines("${message}");
 }
