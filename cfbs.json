@@ -13,6 +13,17 @@
       "commit": "c92106b72ac9a9f12e412df7ecba1ea22bcb373a",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./maintainers-in-motd.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./maintainers-in-motd.cf services/cfbs/maintainers-in-motd.cf",
+        "policy_files services/cfbs/maintainers-in-motd.cf",
+        "bundles maintainers_in_motd"
+      ]
     }
   ],
   "git": true
