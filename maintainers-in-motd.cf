@@ -17,7 +17,8 @@ bundle agent maintainers_in_motd
         "Purpose: ${purpose}",
         "Maintainer: ${maintainer}${maintainer_email}",
         "",
-        "Please use this system for its intended purpose and contact the maintainer with any questions/issues."
+        "Please use this system for its intended purpose and contact the maintainer with any questions/issues.",
+        "***",
       };
 
   files:
