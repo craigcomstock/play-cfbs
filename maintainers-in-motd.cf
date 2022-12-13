@@ -14,4 +14,9 @@ bundle agent maintainers_in_motd
     has_maintainer::
       "/etc/motd"
         edit_line => append_if_no_lines("${message}");
+  reports:
+    "data:maintainer is ${data:maintainer}";
+    "maintainer is ${maintainer}";
+    "data:maintainer_email is ${data:maintainer_email}";
+    "maintainer_email is ${maintainer_email}";
 }
