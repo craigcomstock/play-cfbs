@@ -2,8 +2,8 @@ bundle agent maintainers_in_motd
 {
   classes:
       "has_maintainer" or => {
-        "data:variables.maintainer",
-        "data:variables.maintainer_email"
+        isvariable("data:variables.maintainer"),
+        isvariable("data:variables.maintainer_email")
       };
   vars:
     has_maintainer::
