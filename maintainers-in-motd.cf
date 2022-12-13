@@ -12,6 +12,5 @@ bundle agent maintainers_in_motd
       "message" string => "The maintainer for this system is ${maintainer}${maintainer_email}. Please contact them with any questions or issues.";
   files:
     "/etc/motd"
-      edit_line => append_if_no_lines(${message}),
-      if => fileexists("$(this.promiser)");
+      edit_line => append_if_no_lines(${message});
 }
