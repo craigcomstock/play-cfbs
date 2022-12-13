@@ -12,19 +12,12 @@ bundle agent maintainers_in_motd
       "maintainer" string => ifelse(isvariable("data:variables.maintainer"),"${data:variables.maintainer}","");
       "maintainer_email" string => ifelse(isvariable("data:variables.maintainer_email"),"(${data:variables.maintainer_email})", "(email missing)");
       "purpose" string => ifelse(isvariable("data:variables.purpose"),"(${data:variables.purpose})", "unspecified");
-      "message" slist => {
-        "***",
-        "Purpose: ${purpose}",
-        "Maintainer: ${maintainer}${maintainer_email}",
-        "",
-        "Please use this system for its intended purpose and contact the maintainer with any questions/issues.",
-        "***",
-      };
+      "message" string => "::: use this machine for ${purpose}, contact ${maintainer}${maintainer_email} with any questions/issues. :::";
 
   files:
     has_maintainer::
       "/etc/motd"
         create => "true",
 
-        edit_line => lines_present("${message}");
+        edit_line => replace_or_add(":::.*:::", "${message}");
 }
