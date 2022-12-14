@@ -38,6 +38,16 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./CFE_knowledge.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./CFE_knowledge.cf services/cfbs/CFE_knowledge.cf",
+        "policy_files services/cfbs/CFE_knowledge.cf"
+      ]
     }
   ],
   "git": true
