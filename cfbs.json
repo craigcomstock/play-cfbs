@@ -26,6 +26,18 @@
         "bundles maintainers_in_motd"
       ],
       "added_by": "cfbs add"
+    },
+    {
+      "name": "client-initiated-reporting",
+      "description": "Enables client initiated reporting and disable pull collection.",
+      "tags": ["experimental", "reporting"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/cfengine",
+      "version": "0.1.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "reporting/client-initiated-reporting",
+      "added_by": "cfbs add",
+      "steps": ["json def.json def.json"]
     }
   ],
   "git": true
