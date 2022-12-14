@@ -13,6 +13,19 @@
       "commit": "c92106b72ac9a9f12e412df7ecba1ea22bcb373a",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "maintainers-in-motd",
+      "description": "Add maintainer and purpose information from CMDB to /etc/motd",
+      "url": "https://github.com/cfengine/modules",
+      "commit": "89629690fe265556e1ae4eb9127e42fb9525c9f5",
+      "subdirectory": "security/maintainers-in-motd",
+      "steps": [
+        "copy ./maintainers-in-motd.cf services/cfbs/modules/maintainers-in-motd.cf",
+        "policy_files services/cfbs/modules/maintainers-in-motd.cf",
+        "bundles maintainers_in_motd"
+      ],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
