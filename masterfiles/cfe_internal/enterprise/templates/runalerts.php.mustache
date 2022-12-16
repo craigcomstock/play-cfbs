@@ -1,0 +1,23 @@
+#!{{{vars.sys.workdir}}}/httpd/php/bin/php
+# Rendered by CFEngine
+
+<?php
+if(PHP_SAPI != 'cli')
+{
+  print("Only allowed to run from the CLI");
+}
+
+while(1 == 1)
+{
+  $status=0;
+  touch ('{{{vars.cfe_internal_php_runalerts.runalerts_stampfiles_dir}}}/runalerts_all');
+  passthru('{{{vars.sys.workdir}}}/httpd/php/bin/php {{{vars.cfe_internal_hub_vars.public_docroot}}}/index.php cli_tasks runalerts {{{vars.cfe_internal_php_runalerts.sql[limit]}}} {{{vars.cfe_internal_php_runalerts.sql[running]}}} all', $status);
+
+  if ($status != 0){
+    print("Error executing cli_task runalerts all");
+    print("Sleeping for {{{vars.cfe_internal_php_runalerts.sleep_time}}} seconds");
+  }
+
+  sleep({{{vars.cfe_internal_php_runalerts.sleep_time}}});
+}
+?>

@@ -1,0 +1,60 @@
+#!/bin/sh
+# because we can't use $(...) with /bin/sh on SunOS 5.10
+# shellcheck disable=SC2006
+# another SunOS workaround
+command -v ggrep >/dev/null && GREP="ggrep"|| GREP="grep"
+set -e
+#set -x
+if [ "$1" = "supports-api-version" ]
+then
+  echo "1"
+  exit 0
+fi
+
+_dir=`dirname "$0"`
+module_dir=`cd "$_dir" && pwd -P`
+log="$module_dir/test_module.log"
+
+echo "$1" >> "$log"
+
+
+pkg_name=""
+
+while read line
+do
+  echo "$line" | "$GREP" -q ^File= 2>/dev/null && pkg_name=`echo "$line" | cut -d= -f2`
+done
+
+install_found=false
+"$GREP" -q repo-install "$log" 2>/dev/null && install_found=true
+
+if [ "$1" = "list-installed" ]; then
+  if $install_found; then
+    cat <<EOF
+Name=cfe-present-package
+Version=3
+Architecture=amd64
+EOF
+  else
+    cat <<EOF
+Name=cfe-present-package
+Version=1
+Architecture=amd64
+EOF
+  fi
+elif [ "$1" = "list-updates" ] || [ "$1" = "list-updates-local" ]; then
+  if ! $install_found; then
+    cat <<EOF
+Name=cfe-present-package
+Version=3
+Architecture=amd64
+EOF
+  fi
+elif [ "$1" = "get-package-data" ]; then
+  cat <<EOF
+PackageType=repo
+Name=$pkg_name
+EOF
+fi
+
+exit 0

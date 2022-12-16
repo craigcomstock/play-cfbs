@@ -1,0 +1,12 @@
+name: Style Check
+
+on:
+  workflow_call:
+
+jobs:
+  style_check:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Style Check
+      run: sh tests/style_check.sh

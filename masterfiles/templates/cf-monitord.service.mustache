@@ -1,0 +1,16 @@
+[Unit]
+Description=CFEngine Monitor Daemon
+After=syslog.target
+ConditionPathExists={{{vars.sys.bindir}}}/cf-monitord
+ConditionPathExists={{{vars.sys.default_policy_path}}}
+PartOf=cfengine3.service
+
+[Service]
+Type=simple
+ExecStart={{{vars.sys.bindir}}}/cf-monitord --no-fork
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=cfengine3.service

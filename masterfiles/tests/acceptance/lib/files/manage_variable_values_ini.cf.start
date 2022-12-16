@@ -1,0 +1,16 @@
+[section]
+keyone=valueone
+keytwo=value2
+[CFE-3221]
+variablename= desired value
+variablename2 = desired value2
+variablename3 =desired value3
+# variablename5=desired value5
+# variablename6= desired value6
+# variablename7 = desired value7
+# variablename8 = wrong value8
+[CFE-3244]
+  keyone=valueone
+  keytwo=value2
+[section2]
+wat=WUT

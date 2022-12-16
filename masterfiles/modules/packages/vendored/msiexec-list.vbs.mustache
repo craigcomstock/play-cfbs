@@ -1,0 +1,63 @@
+' Helper script to enumerate installed software (packages)
+' Based on original work of Cory Coager at CDPHP <cory.coager@cdphp.com>
+' This module reads the installed packages from the registry using WMI
+
+Const HKLM = &H80000002 'HKEY_LOCAL_MACHINE
+strComputer = "."
+strKeys=Array("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\", "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\")
+strDisplayNameEntryA = "DisplayName"
+strDisplayNameEntryB = "QuietDisplayName"
+strInstallDateEntry = "InstallDate"
+strDisplayVersionEntry = "DisplayVersion"
+
+' Read registry using WMI
+Set objReg = GetObject("winmgmts://" & strComputer & "/root/default:StdRegProv")
+' Iterate through each uninstall registry key
+For Each strKey in strKeys
+  ' Enumerate the subkeys
+  objReg.EnumKey HKLM, strKey, arrSubkeys
+  ' Iterate through each subkey
+  For Each strSubkey In arrSubkeys
+    strDisplayNameValue = ""
+    strInstallDateValue = ""
+    strDisplayVersionValue = ""
+    ' Read the DisplayName
+    intRet1 = objReg.GetStringValue(HKLM, strKey & strSubkey, strDisplayNameEntryA , strDisplayNameValue)
+    If intRet1 <> 0 Then
+      ' On failure, read the QuietDisplayName
+      intRet1 = objReg.GetStringValue(HKLM, strKey & strSubkey, strDisplayNameEntryB , strDisplayNameValue)
+    End If
+    ' Check if key has a DisplayName, otherwise not valid
+    If intRet1 = 0 And strDisplayNameValue <> "" Then
+      ' Read the InstallDate
+      objReg.GetStringValue HKLM, strKey & strSubkey, strInstallDateEntry, strInstallDateValue
+      ' Read the DisplayVersion
+      intRet2 = objReg.GetStringValue( HKLM, strKey & strSubkey, strDisplayVersionEntry, strDisplayVersionValue )
+      If intRet2 <> 0 Then
+        ' DisplayVersion is missing, so try to fall back InstalledVersion
+        intRet2 = objReg.GetStringValue( HKLM, strKey & strSubKey, "InstalledVersion", strDisplayVersionValue )
+      End If
+      If intRet2 <> 0 Then
+        ' DisplayVersion and InstalledVersion are missing, so try to fall back to a key of the same name as the node, i.e. AOMEI Backupper Server.
+        intRet2 = objReg.GetStringValue( HKLM, strKey & strDisplayNameValue, strDisplayNameValue, strDisplayVersionValue )
+      End If
+      ' Print out the DisplayName
+      WScript.Echo "Name=" & strDisplayNameValue
+      ' Print out the DisplayVersion
+      ' Ensure that Version is set to something, else it can't be inserted into the database.
+      If intRet2 <> 0 Then
+        ' Unable to find a version, set it to "unknown" so that it can be inserted into the database and not result in patch failure
+        WScript.Echo "Version=unknown"
+      Else
+        ' Must have a legit version
+        WScript.Echo "Version=" & LCase(strDisplayVersionValue)
+      End If
+      ' Print out the Architecture
+      If InStr(strKey, "6432") = 0 Then
+        WScript.Echo "Architecture=amd64"
+      Else
+        WScript.Echo "Architecture=amd64"
+      End If
+    End If
+  Next
+Next

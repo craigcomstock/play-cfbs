@@ -1,7 +1,15 @@
 {
   "name": "Example project",
-  "type": "policy-set",
   "description": "Example description",
-  "build": [],
+  "type": "policy-set",
+  "build": [
+    {
+      "name": "./masterfiles/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    }
+  ],
   "git": true
 }
