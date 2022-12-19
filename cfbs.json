@@ -9,6 +9,18 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "client-initiated-reporting",
+      "version": "0.1.1",
+      "description": "Enables client initiated reporting and disable pull collection.",
+      "tags": ["experimental", "reporting"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/cfengine",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "reporting/client-initiated-reporting",
+      "added_by": "cfbs add",
+      "steps": ["json def.json def.json"]
     }
   ],
   "git": true
