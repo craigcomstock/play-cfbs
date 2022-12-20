@@ -84,6 +84,18 @@
         "copy ./inventory-cfengine-version-support-status.cf services/cfengine-supported/",
         "json ./cfbs/def.json def.json"
       ]
+    },
+    {
+      "name": "upgrade-all-packages",
+      "description": "This module ensures that the package manager data is updated and all upgradeable packages are upgraded",
+      "url": "https://github.com/craigcomstock/cfengine-security-hardening",
+      "commit": "f065a2d245908bc0faa874d03b6721c55f924256",
+      "subdirectory": "upgrade-all-packages",
+      "dependencies": ["autorun"],
+      "steps": [
+        "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
+      ],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
