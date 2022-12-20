@@ -69,6 +69,21 @@
       "dependencies": ["autorun", "every-minute"],
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "cfengine-supported",
+      "version": "0.0.1",
+      "description": "Adds reporting data (inventory) for the support status for the current version of CFEngine.",
+      "tags": ["supported", "inventory", "security"],
+      "repo": "https://github.com/nickanderson/cfengine-supported",
+      "by": "https://github.com/nickanderson",
+      "commit": "6a09cc850423a063533ffe19e9066753952b9d8d",
+      "subdirectory": "",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./inventory-cfengine-version-support-status.cf services/cfengine-supported/",
+        "json ./cfbs/def.json def.json"
+      ]
     }
   ],
   "git": true
