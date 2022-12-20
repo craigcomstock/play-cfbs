@@ -3,7 +3,7 @@
     "bundle": "delete_files",
     "label": "Files",
     "namespace": "delete_files",
-    "response": [{"path": "/tmp/deleteme", "why": "obviously!"}],
+    "response": [{"path": "/tmp/deleteme", "why": "obviously!x"}],
     "subtype": [
       {
         "key": "path",
