@@ -56,14 +56,12 @@ bundle agent cfe_internal_setup_knowledge
       handle => "cfe_internal_setup_knowledge_dir_doc_root",
       perms => mog("0550", "root", $(def.cf_apache_group) );
 
-      "$(sys.workdir)/httpd/php/." -> { "ENT-9703", "cfe_internal_setup_knowledge_dir_doc_root_runalerts_stamp" }
-        create => "true",
+      "$(sys.workdir)/httpd/php" -> { "ENT-9703", "cfe_internal_setup_knowledge_dir_doc_root_runalerts_stamp" }
         comment => "php directory needs to be accessible (execute) to cfapache",
         handle => "cfe_internal_setup_knowledge_dir_doc_root_php",
         perms => mog("0550", "root", $(def.cf_apache_group) );
 
-      "$(sys.workdir)/httpd/php/runalerts-stamp/." -> { "ENT-9703" }
-        create => "true",
+      "$(sys.workdir)/httpd/php/runalerts-stamp" -> { "ENT-9703" }
         comment => "runalerts-stamp directory needs to be accessible (execute) to cfapache",
         handle => "cfe_internal_setup_knowledge_dir_doc_root_runalerts_stamp",
         perms => mog("0550", "root", $(def.cf_apache_group) );
@@ -361,22 +359,6 @@ bundle agent cfe_internal_setup_knowledge
         comment => "If this directory is not present and writable by the
                     web-server, then Mission Portal users will be unable to
                     upload custom action scripts.";
-
-      "/opt/cfengine/build/." -> { "ENT-9665" }
-        perms => mog("770", "root", $(def.cf_apache_group) ),
-        depth_search => recurse_with_base("inf"),
-        file_select => dirs,
-        comment => concat("Directories for build projects need to be owned by root",
-                   "so that cf-reactor can run git commands there, but also",
-                   "available to cfapache for access");
-
-      "/opt/cfengine/build/." -> { "ENT-9665" }
-        perms => mog("550", "root", $(def.cf_apache_group) ),
-        depth_search => recurse_with_base("inf"),
-        file_select => not_dir,
-        comment => concat("Files for build projects need to be owned by root",
-                   "so that cf-reactor can run git commands there, but also",
-                   "available to cfapache for access");
 
 }
 
