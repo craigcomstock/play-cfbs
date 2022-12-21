@@ -89,7 +89,7 @@
       "name": "upgrade-all-packages",
       "description": "This module ensures that the package manager data is updated and all upgradeable packages are upgraded",
       "url": "https://github.com/craigcomstock/cfengine-security-hardening",
-      "commit": "f065a2d245908bc0faa874d03b6721c55f924256",
+      "commit": "e3039050296ec20c7e44b3accba84c146cf6ef69",
       "subdirectory": "upgrade-all-packages",
       "dependencies": ["autorun"],
       "steps": [
