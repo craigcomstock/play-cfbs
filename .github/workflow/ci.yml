@@ -1,0 +1,8 @@
+on: [ pull_request, push ]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: show github context contents
+        run: echo tojson(github)
