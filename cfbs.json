@@ -2,6 +2,15 @@
   "name": "ENT-10789",
   "type": "policy-set",
   "description": "Example description",
-  "build": [],
+  "build": [
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/craigcomstock/masterfiles",
+      "commit": "5a212a8ddac02d6764f7369491d2a2f067be5499",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"],
+      "added_by": "cfbs add"
+    }
+  ],
   "git": true
 }
