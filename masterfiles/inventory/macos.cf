@@ -1,6 +1,0 @@
-bundle common inventory_macos
-# @brief Mac OS X inventory bundle
-#
-# This common bundle is for Mac OS X inventory work.
-{
-}
