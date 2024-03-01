@@ -139,10 +139,11 @@ any::
     ),
     meta => { "inventory", "attribute_name=OS", "derived-from=sys.os_release" };
 
-darwin::
-  "product_name" string => execresult("/usr/bin/sw_vers --productName", useshell);
-  "product_version" string => execresult("/usr/bin/sw_vers --productVersion", useshell);
-  "description" string => "$(product_name) $(product_version)",
-    meta => { "inventory", "attribute_name=OS", "derived-from=sw_vers command" };
+# TODO move this darwin class => MacOS into libenv/sysinfo.c
+#darwin::
+#  "product_name" string => execresult("/usr/bin/sw_vers --productName", useshell);
+#  "product_version" string => execresult("/usr/bin/sw_vers --productVersion", useshell);
+#  "description" string => "$(product_name) $(product_version)",
+#    meta => { "inventory", "attribute_name=OS", "derived-from=sw_vers command" };
 @endif
 }
